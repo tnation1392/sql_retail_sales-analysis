@@ -1,0 +1,27 @@
+-- Check the count to ensure accuracy of records
+SELECT count(*) from retail_sales;
+-- Resulting count is 1987 so correct
+
+-- Next check the count of customer ids present in the dataset
+SELECT count(DISTINCT customer_id) from retail_sales;
+-- Result: 155
+
+-- Next check the unique categories in the dataset
+SELECT DISTINCT category from retail_sales;
+-- Result: Beauty
+           Clothing
+           Electronics
+
+-- Next is a NULL value check
+SELECT * FROM retail_sales
+WHERE
+	sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
+    gender IS NULL OR age IS NULL OR category IS NULL OR 
+    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+
+--Next delete all NULL values from the dataset
+DELETE FROM retail_sales
+WHERE 
+    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
+    gender IS NULL OR age IS NULL OR category IS NULL OR 
+    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
